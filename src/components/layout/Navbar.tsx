@@ -123,11 +123,11 @@ export const Navbar: React.FC = () => {
                 <>
                     {/* Backdrop */}
                     <div
-                        className="fixed inset-0 bg-black/50 z-40 md:hidden"
+                        className="fixed inset-0 bg-black/50 z-[60] md:hidden"
                         onClick={() => setIsMobileMenuOpen(false)}
                     />
                     {/* Drawer */}
-                    <div className="fixed top-16 right-0 bottom-0 w-64 bg-background border-l border-border z-50 md:hidden overflow-y-auto">
+                    <div className="fixed top-16 right-0 bottom-0 w-64 bg-background border-l border-border z-[70] md:hidden overflow-y-auto shadow-2xl">
                         <nav className="flex flex-col p-4 space-y-4">
                             <Link
                                 to="/"
