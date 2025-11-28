@@ -35,12 +35,13 @@ export const Navbar: React.FC = () => {
     };
 
     return (
-        <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
+        <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-md">
             <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                 <Link to="/" className="text-2xl font-display font-bold text-primary">
                     Aninfo
                 </Link>
 
+                {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-6">
                     <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">
                         Home
@@ -57,7 +58,8 @@ export const Navbar: React.FC = () => {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                    <div className="relative hidden sm:block">
+                    {/* Desktop Search */}
+                    <div className="relative hidden md:block">
                         <form onSubmit={handleSearch}>
                             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                             <input
@@ -118,48 +120,57 @@ export const Navbar: React.FC = () => {
                 </div>
             </div>
 
-            {/* Mobile Menu Drawer */}
+            {/* Mobile Menu Accordion */}
             {isMobileMenuOpen && (
-                <>
-                    {/* Backdrop */}
-                    <div
-                        className="fixed inset-0 bg-black/50 z-[60] md:hidden"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                    />
-                    {/* Drawer */}
-                    <div className="fixed top-16 right-0 bottom-0 w-64 bg-background border-l border-border z-[70] md:hidden overflow-y-auto shadow-2xl">
-                        <nav className="flex flex-col p-4 space-y-4">
-                            <Link
-                                to="/"
-                                className="text-lg font-medium hover:text-primary transition-colors py-2"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                Home
-                            </Link>
-                            <Link
-                                to="/browse"
-                                className="text-lg font-medium hover:text-primary transition-colors py-2"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                Browse
-                            </Link>
-                            <Link
-                                to="/watchlist"
-                                className="text-lg font-medium hover:text-primary transition-colors py-2"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                Watchlist
-                            </Link>
-                            <Link
-                                to="/about"
-                                className="text-lg font-medium hover:text-primary transition-colors py-2"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                About
-                            </Link>
-                        </nav>
+                <div className="md:hidden border-t border-border bg-background">
+                    {/* Mobile Search */}
+                    <div className="p-4 border-b border-border">
+                        <form onSubmit={handleSearch}>
+                            <div className="relative">
+                                <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                                <input
+                                    type="search"
+                                    placeholder="Search anime..."
+                                    className="w-full h-10 rounded-lg border border-input bg-background pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                />
+                            </div>
+                        </form>
                     </div>
-                </>
+
+                    {/* Mobile Navigation Links */}
+                    <nav className="flex flex-col p-2">
+                        <Link
+                            to="/"
+                            className="px-4 py-3 text-base font-medium hover:bg-muted rounded-lg transition-colors"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            Home
+                        </Link>
+                        <Link
+                            to="/browse"
+                            className="px-4 py-3 text-base font-medium hover:bg-muted rounded-lg transition-colors"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            Browse
+                        </Link>
+                        <Link
+                            to="/watchlist"
+                            className="px-4 py-3 text-base font-medium hover:bg-muted rounded-lg transition-colors"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            Watchlist
+                        </Link>
+                        <Link
+                            to="/about"
+                            className="px-4 py-3 text-base font-medium hover:bg-muted rounded-lg transition-colors"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            About
+                        </Link>
+                    </nav>
+                </div>
             )}
         </nav>
     );
