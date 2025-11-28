@@ -25,7 +25,7 @@ Aninfo is a modern anime discovery platform built with React, Vite, and Tailwind
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/yourusername/aninfo.git
+    git clone https://github.com/abhijit-the-ghost/aninfo.git
     cd aninfo
     ```
 
