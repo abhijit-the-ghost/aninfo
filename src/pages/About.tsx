@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Mail, Twitter, Code2, Database, Layout, Zap, Instagram } from 'lucide-react';
+import { Github, Mail, Code2, Database, Layout, Zap, Instagram } from 'lucide-react';
 
 export const About: React.FC = () => {
     return (
