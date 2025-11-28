@@ -36,21 +36,21 @@ export const Navbar: React.FC = () => {
     return (
         <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
             <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-                <Link to="/" className="text-2xl font-display font-bold text-primary">
+                <Link to="/aninfo" className="text-2xl font-display font-bold text-primary">
                     Aninfo
                 </Link>
 
                 <div className="hidden md:flex items-center space-x-6">
-                    <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">
+                    <Link to="/aninfo" className="text-sm font-medium hover:text-primary transition-colors">
                         Home
                     </Link>
-                    <Link to="/browse" className="text-sm font-medium hover:text-primary transition-colors">
+                    <Link to="/aninfo/browse" className="text-sm font-medium hover:text-primary transition-colors">
                         Browse
                     </Link>
-                    <Link to="/watchlist" className="text-sm font-medium hover:text-primary transition-colors">
+                    <Link to="/aninfo/watchlist" className="text-sm font-medium hover:text-primary transition-colors">
                         Watchlist
                     </Link>
-                    <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors">
+                    <Link to="/aninfo/about" className="text-sm font-medium hover:text-primary transition-colors">
                         About
                     </Link>
                 </div>
@@ -85,7 +85,7 @@ export const Navbar: React.FC = () => {
                                         {suggestions.data.slice(0, 5).map((anime) => (
                                             <li key={anime.mal_id}>
                                                 <Link
-                                                    to={`/anime/${anime.mal_id}`}
+                                                    to={`/aninfo/anime/${anime.mal_id}`}
                                                     className="flex items-center space-x-3 p-3 hover:bg-muted transition-colors"
                                                     onClick={() => setShowSuggestions(false)}
                                                 >
