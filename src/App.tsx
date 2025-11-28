@@ -22,14 +22,13 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route path="/aninfo" element={<Layout />}>
+          <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="/aninfo/browse" element={<Browse />} />
-            <Route path="/aninfo/anime/:id" element={<AnimeDetail />} />
-            <Route path="/aninfo/watchlist" element={<Watchlist />} />
-            <Route path="/aninfo/about" element={<About />} />
+            <Route path="browse" element={<Browse />} />
+            <Route path="anime/:id" element={<AnimeDetail />} />
+            <Route path="watchlist" element={<Watchlist />} />
+            <Route path="about" element={<About />} />
             <Route path="*" element={<div className="text-center py-20">Page Not Found</div>} />
-            {/* Add other routes here */}
           </Route>
         </Routes>
       </BrowserRouter>
