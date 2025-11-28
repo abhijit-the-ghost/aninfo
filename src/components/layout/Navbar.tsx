@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Loader2 } from 'lucide-react';
+import { Search, Loader2, Menu, X } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { useDebounce } from '../../hooks/useDebounce';
 import { jikanApi } from '../../api/jikan';
@@ -8,6 +8,7 @@ import { jikanApi } from '../../api/jikan';
 export const Navbar: React.FC = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [showSuggestions, setShowSuggestions] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const debouncedSearch = useDebounce(searchQuery, 300);
     const navigate = useNavigate();
 
@@ -106,8 +107,60 @@ export const Navbar: React.FC = () => {
                             </div>
                         )}
                     </div>
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                    </button>
                 </div>
             </div>
+
+            {/* Mobile Menu Drawer */}
+            {isMobileMenuOpen && (
+                <>
+                    {/* Backdrop */}
+                    <div
+                        className="fixed inset-0 bg-black/50 z-40 md:hidden"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                    />
+                    {/* Drawer */}
+                    <div className="fixed top-16 right-0 bottom-0 w-64 bg-background border-l border-border z-50 md:hidden overflow-y-auto">
+                        <nav className="flex flex-col p-4 space-y-4">
+                            <Link
+                                to="/"
+                                className="text-lg font-medium hover:text-primary transition-colors py-2"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                Home
+                            </Link>
+                            <Link
+                                to="/browse"
+                                className="text-lg font-medium hover:text-primary transition-colors py-2"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                Browse
+                            </Link>
+                            <Link
+                                to="/watchlist"
+                                className="text-lg font-medium hover:text-primary transition-colors py-2"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                Watchlist
+                            </Link>
+                            <Link
+                                to="/about"
+                                className="text-lg font-medium hover:text-primary transition-colors py-2"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                About
+                            </Link>
+                        </nav>
+                    </div>
+                </>
+            )}
         </nav>
     );
 };
